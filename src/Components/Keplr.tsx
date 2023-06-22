@@ -50,7 +50,12 @@ function Keplr() {
 	};
 
 	// 余额查询  Todo
-	const getBalances = async () => {};
+	const getBalances = async () => {
+		if(client){
+			const _balance = await client.getBalance(address,chain.stakeCurrency.coinMinimalDenom);
+			setBalance(_balance);
+		}
+	};
 
 	// txhash查询  Todo
 	const getTx = async () => {};
