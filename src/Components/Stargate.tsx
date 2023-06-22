@@ -155,7 +155,8 @@ function Stargate() {
 				</span>
 				&nbsp;
 				{address && (
-					<a href="https://faucet.osmosis.zone/" target="_blank">
+					// <a href="https://faucet.osmosis.zone/" target="_blank">
+					<a href="https://faucet.osmotest5.osmosis.zone/" target="_blank">
 						获取
 					</a>
 				)}
