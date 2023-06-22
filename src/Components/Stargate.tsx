@@ -68,7 +68,10 @@ function Stargate() {
 	const getOthers = async () => {};
 
 	// connect client Todo
-	const connect = async () => {};
+	const connect = async () => {
+		const _client = await StargateClient.connect(chain.rpc);
+		setClient(_client);
+	};
 
 	// disconnect client Todo
 	const disConnect = async () => {};
