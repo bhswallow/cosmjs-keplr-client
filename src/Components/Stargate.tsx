@@ -59,7 +59,11 @@ function Stargate() {
 	};
 
 	// 通过助记词钱包获得地址 Todo
-	const getAddressByMnemonic = async () => {}
+	const getAddressByMnemonic = async () => {
+		const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic,{prefix:myPrefix});
+		const [firstAccount] = await wallet.getAccounts();
+		setAddress(firstAccount.address);
+	}
 
 	// 余额查询 Todo
 	const getBalance = async () => {};
