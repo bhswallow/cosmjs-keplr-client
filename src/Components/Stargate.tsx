@@ -66,7 +66,12 @@ function Stargate() {
 	}
 
 	// 余额查询 Todo
-	const getBalance = async () => {};
+	const getBalance = async () => {
+		if(client){
+			const _balance = await client.getBalance(address,chain.stakeCurrency.coinMinimalDenom);
+			setBalance(_balance);
+		}
+	};
 
 	// strageClient 基础 api 使用 Todo
 	const getOthers = async () => {};
