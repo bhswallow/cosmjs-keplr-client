@@ -74,7 +74,23 @@ function Stargate() {
 	};
 
 	// strageClient 基础 api 使用 Todo
-	const getOthers = async () => {};
+	const getOthers = async () => {
+		const _chainId = await client.getChainId();
+		const _account = await client.getAccount(address);
+		const _height = await client.getHeight();
+		const _allBalance = await client?.getAllBalances(address);
+		const _block = await client?.getBlock(_height);
+		const _sequence = await client?.getSequence(address);
+
+		console.log("chainId:"+_chainId);
+
+		setAccount(_account);
+		setChainId(_chainId);
+		setHeight(_height);
+		setAllBalances(_allBalance);
+		setBlock(_block);
+		setSequence(_sequence);
+	};
 
 	// connect client Todo
 	const connect = async () => {
