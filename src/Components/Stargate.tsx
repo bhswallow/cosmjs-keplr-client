@@ -10,6 +10,9 @@ import React, { useEffect, useState } from "react";
 import chain from "../config/osmosis";
 import { useInterval } from "../Hooks/useInterval";
 
+const myPrefix = "osmo";
+const myMnemonic = "mnemonic";
+
 function Stargate() {
 	const [mnemonic, setMnemonic] = useState<string>(localStorage.getItem("mnemonic"));
 	const [address, setAddress] = useState<string>();
@@ -49,7 +52,11 @@ function Stargate() {
 	}, [address, client]);
 
 	// 创建账户 Todo
-	const createAccount = async () => {};
+	const createAccount = async () => {
+		const myAccount:any = await DirectSecp256k1HdWallet.generate(12,{prefix:myPrefix});
+		setMnemonic(myAccount.secret.data);
+		localStorage.setItem(myMnemonic,myAccount?.secret.data);
+	};
 
 	// 通过助记词钱包获得地址 Todo
 	const getAddressByMnemonic = async () => {}
