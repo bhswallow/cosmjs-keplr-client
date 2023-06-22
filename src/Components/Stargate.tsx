@@ -83,7 +83,17 @@ function Stargate() {
 	};
 
 	// disconnect client Todo
-	const disConnect = async () => {};
+	const disConnect = async () => {
+		const _strageClient = await client.disconnect();
+		setClient(_strageClient);
+		setAccount(null);
+		setChainId(null);
+		setHeight(null);
+		setBalance(null);
+		setAllBalances(null);
+		setBlock(null);
+		setSequence(null);
+	};
 
 	return (
 		<div className="stargate">
