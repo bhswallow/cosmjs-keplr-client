@@ -58,7 +58,11 @@ function Keplr() {
 	};
 
 	// txhash查询  Todo
-	const getTx = async () => {};
+	const getTx = async () => {
+		if(!tx) return;
+		const result = await client.getTx(tx);
+		setTxRes(result);
+	};
 
 	// 转账 Todo
 	const sendToken = async () => {
