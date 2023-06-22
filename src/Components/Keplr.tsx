@@ -1,6 +1,7 @@
 import type { ChainInfo } from "@keplr-wallet/types";
 import React, { useEffect, useState } from "react";
 import osmo from "../config/osmosis";
+import {SigningStargateClient} from "@cosmjs/stargate";
 
 function Keplr() {
 	const [chain, setChain] = useState<ChainInfo>(osmo);
@@ -28,7 +29,25 @@ function Keplr() {
 	}, [address, client, sendHash]);
 
 	// 连接keplr钱包  Todo
-	const connectWallet = async () => {};
+	const connectWallet = async () => {
+		if(!window.keplr){
+			alert("please install keplr extension!");
+		}
+		console.log("------connect keplr------");
+		// 添加链到keplr
+		await window.keplr.experimentalSuggestChain(chain);
+		await window.keplr.enable(chain.chainId);
+
+		const offlineSigner = window.getOfflineSigner(chain.chainId);
+
+		const accounts = await offlineSigner.getAccounts();
+		const client = await SigningStargateClient.connectWithSigner(chain.rpc,offlineSigner);
+
+		// add your chain to keplr
+		setAddress(accounts[0].address);
+		setClient(client);
+
+	};
 
 	// 余额查询  Todo
 	const getBalances = async () => {};
