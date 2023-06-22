@@ -26,7 +26,7 @@ function Keplr() {
 	useEffect(() => {
 		if (!address && !client) return;
 		getBalances();
-	}, [address, client, sendHash]);
+	}, [address, client, sendHash,tx]);
 
 	// 连接keplr钱包  Todo
 	const connectWallet = async () => {
